@@ -1,6 +1,6 @@
 # PHP 簡易購物網站
 ![網站畫面](./assets/images/cover.png)
-a
+
 ## 專案簡介 Project Overview
 
 這是一個以 PHP 與 MySQL/MariaDB 為基礎的簡易購物網站。  
