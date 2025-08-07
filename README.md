@@ -1,5 +1,5 @@
 # PHP 簡易購物網站
-![網站畫面](./images/cover.png)
+![網站畫面](./assets/images/cover.png)
 
 ## 專案簡介 Project Overview
 
@@ -15,7 +15,7 @@
 - 歷史訂單查詢
 
 ## ERD
-![圖片](./images/ERD.png)
+![圖片](./assets/images/ERD.png)
 
 ## 技術架構 Tech Stack
 
