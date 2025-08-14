@@ -17,17 +17,17 @@ if($_SESSION['username'] != null && $pw != null && $pw2 != null && $pw == $pw2)
         if(mysqli_query($con , $sql))
         {
                 echo '<center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><h2>修改成功!</h2>';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=../pages/member.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=../index.php>';
         }
         else
         {
                 echo '<center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><h2>修改失敗!</h2>';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=../pages/member.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=../index.php>';
         }
 }
 else
 {
         echo '<center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><h2>修改錯誤!</h2>';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=../index.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=./login.php>';
 }
 ?>

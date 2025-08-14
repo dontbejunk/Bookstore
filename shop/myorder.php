@@ -1,5 +1,5 @@
 <body bgcolor=#FFBFBF>
-    <a href="../pages/member.php">上一頁</a>
+    <a href="../index.php">上一頁</a>
     <br><br>
 <table border="" cellpadding="0" cellspacing="0" width="100%" >
     <tr> 

@@ -1,6 +1,6 @@
 
 <body bgcolor=#FFBFBF>
-    <a href="../pages/member.php">上一頁</a>
+    <a href="../index.php">上一頁</a>
     <br><br>
     <?php $title = $_GET['ids'];
     echo "<h1>訂單號:$title 此訂單含有:</h1>";

@@ -4,7 +4,7 @@ include("../config/mysql_connect.inc.php");
 
 if (empty($_SESSION['gwc'])){
     echo '<center><h2><br><br><br><br><br><br><br><br><br><br><br><br><br>購物車為空!</h2></center>';
-    echo '<meta http-equiv=REFRESH CONTENT=2;url=../pages/member.php>';
+    echo '<meta http-equiv=REFRESH CONTENT=2;url=../index.php>';
     exit;
 }
 
@@ -32,7 +32,7 @@ foreach ($arr as $value){
 
 unset($_SESSION['gwc']); 
 unset($_SESSION['total']); 
-echo '<meta http-equiv=REFRESH CONTENT=2;url=../pages/member.php>';
+echo '<meta http-equiv=REFRESH CONTENT=2;url=../index.php>';
 ?>
 
 </body>

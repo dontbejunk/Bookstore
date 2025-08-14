@@ -16,7 +16,7 @@ $row = mysqli_fetch_row($result);
 
 if ( ($row[0] - 1) < 0){
         echo "<center><h2><br><br><br><br><br><br><br><br><br><br><br><br><br>庫存不足!</h2></center>";
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=../pages/member.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=../index.php>';
         exit;
 }
 
@@ -40,7 +40,7 @@ else{
                         if( ($row[0] - $value[1] - 1) < 0){
 
                                 echo "<center><h2><br><br><br><br><br><br><br><br><br><br><br><br><br>庫存不足!</h2></center>";
-                                echo '<meta http-equiv=REFRESH CONTENT=2;url=../pages/member.php>';
+                                echo '<meta http-equiv=REFRESH CONTENT=2;url=../index.php>';
                                 exit;
                         }
                 }
@@ -66,6 +66,6 @@ else{
         $_SESSION["gwc"] = $arr;
 
 }
-echo '<meta http-equiv=REFRESH CONTENT=2;url=../pagesmember.php>';
+echo '<meta http-equiv=REFRESH CONTENT=2;url=../index.php>';
 
 ?>

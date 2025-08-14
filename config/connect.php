@@ -31,7 +31,7 @@ if($id != null && $pw != null && $row[0] == $id && $row[1] == $pw)
         //將帳號寫入session，方便驗證使用者身份
         $_SESSION['username'] = $id;
         echo "<center><h2><br><br><br><br><br><br><br><br><br><br><br><br><br>登入成功!</h2></center>"; 
-        echo '<meta http-equiv=REFRESH CONTENT=1;url=../pages/member.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=1;url=../index.php>';
 }
 else
 {

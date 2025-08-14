@@ -6,7 +6,7 @@ $search = $_POST['search'];
 $sql = "SELECT `item_name`  FROM `shop` WHERE `item_name` Like '%$search%' ";
 $result = mysqli_query($con , $sql);
 
-echo '<a href="member.php">上一頁</a><br><br>';
+echo '<a href="../index.php">上一頁</a><br><br>';
 if (mysqli_num_rows($result) > 0){
     foreach ($result as $v){
         

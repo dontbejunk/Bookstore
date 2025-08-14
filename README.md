@@ -1,6 +1,6 @@
 # PHP 簡易購物網站
-![網站畫面](./assets/images/cover.png)
-a
+![網站畫面](./images/cover.png)
+
 ## 專案簡介 Project Overview
 
 這是一個以 PHP 與 MySQL/MariaDB 為基礎的簡易購物網站。  
@@ -15,7 +15,7 @@ a
 - 歷史訂單查詢
 
 ## ERD
-![圖片](./assets/images/ERD.png)
+![圖片](./images/ERD.png)
 
 ## 技術架構 Tech Stack
 

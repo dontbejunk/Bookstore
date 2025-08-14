@@ -1,7 +1,7 @@
 <body>
 <?php 
 include("../config/mysql_connect.inc.php");
-echo '<a href="member.php">上一頁</a><br><br>';
+echo '<a href="../indx.php">上一頁</a><br><br>';
 $id = $_GET['ids'];
 $price = $_GET['price'];
 echo '<img src="../assets/images/' . $id . '.jpg" width="700" height="600" style="float: left"/>';
