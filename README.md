@@ -1,5 +1,5 @@
 # PHP 簡易購物網站
-![網站畫面](./images/cover.png)
+![網站畫面](./assets/images/cover.png)
 
 ## 專案簡介 Project Overview
 
@@ -28,4 +28,6 @@
 ## 🎬 Demo Video
 
 [👉 Watch the demo video here](https://youtu.be/_cxM8Sjr8PY)
+
+
 
