@@ -1,41 +1,42 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Log in</title>
-  </head>
-  <body background ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5IiEkUOyV5ry7QcOtJ9cMuXDZKqW8PG4fapmdMOaD6BKYTs-w-uqkQL8Nq76OqpEifEA&usqp=CAU">
-    
-  </body>
-</html>
-
-
-<?php session_start(); 
-unset($_SESSION['gwc']); 
-?>
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
-//連接資料庫
+session_start();
+unset($_SESSION['gwc']);
 include("mysql_connect.inc.php");
+
 $id = $_POST['id'];
 $pw = $_POST['pw'];
-//搜尋資料庫資料
-$sql = "SELECT * FROM login where username = '$id'";
+
+$sql = "SELECT * FROM login WHERE username = '$id'";
 $result = mysqli_query($con , $sql);
 $row = mysqli_fetch_row($result);
 
-
-if($id != null && $pw != null && $row[0] == $id && $row[1] == $pw)
-{
-        //將帳號寫入session，方便驗證使用者身份
-        $_SESSION['username'] = $id;
-        echo "<center><h2><br><br><br><br><br><br><br><br><br><br><br><br><br>登入成功!</h2></center>"; 
-        echo '<meta http-equiv=REFRESH CONTENT=1;url=../index.php>';
-}
-else
-{
-        echo "<center><h2><br><br><br><br><br><br><br><br><br><br><br><br><br>登入失敗!</h2></center>";
-        echo '<meta http-equiv=REFRESH CONTENT=1;url=../index.php>';
+if($id != null && $pw != null && $row[0] == $id && $row[1] == $pw) {
+    $_SESSION['username'] = $id;
+    $message = "登入成功！";
+    $redirect = "../index.php";
+} else {
+    $message = "登入失敗！帳號或密碼錯誤";
+    $redirect = "../index.php";
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>登入狀態</title>
+<style>
+    body { font-family: Arial, sans-serif; background:#FFF3E0; text-align: center; }
+    .msg-box { margin-top: 20%; padding: 30px; display: inline-block; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+</style>
+<script>
+    setTimeout(function(){ window.location.href = "<?= $redirect ?>"; }, 1000);
+</script>
+</head>
+<body>
+    <div class="msg-box">
+        <h2><?= $message ?></h2>
+        <p>1 秒後將自動跳轉...</p>
+    </div>
+</body>
+</html>

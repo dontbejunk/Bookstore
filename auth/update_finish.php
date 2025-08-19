@@ -1,33 +1,85 @@
-<?php session_start(); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
-include("mysql_connect.inc.php");
+session_start();
+include("../config/mysql_connect.inc.php");
 
 $id = $_POST['id'];
 $pw = $_POST['pw'];
 $pw2 = $_POST['pw2'];
 
+// 判斷是否登入及密碼是否符合
+if($_SESSION['username'] != null && $pw != null && $pw2 != null && $pw == $pw2){
+    $id = $_SESSION['username'];
 
-if($_SESSION['username'] != null && $pw != null && $pw2 != null && $pw == $pw2)
-{
-        $id = $_SESSION['username'];
-    
-        //更新資料庫資料語法
-    $sql = "update login set password= '{$_POST['pw']}', telephone= '{$_POST['telephone']}', address= '{$_POST['address']}' where username='$id'";
-        if(mysqli_query($con , $sql))
-        {
-                echo '<center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><h2>修改成功!</h2>';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=../index.php>';
-        }
-        else
-        {
-                echo '<center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><h2>修改失敗!</h2>';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=../index.php>';
-        }
-}
-else
-{
-        echo '<center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><h2>修改錯誤!</h2>';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=./login.php>';
+    $sql = "UPDATE login SET password='{$_POST['pw']}', telephone='{$_POST['telephone']}', address='{$_POST['address']}' WHERE username='$id'";
+    $success = mysqli_query($con, $sql);
+    $msg = $success ? "修改成功!" : "修改失敗!";
+    $redirect = "../index.php";
+} else {
+    $msg = "修改錯誤!";
+    $redirect = "./login.php";
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>會員修改結果</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #FFB6B9, #FFD6A5);
+        font-family: 'Arial', sans-serif;
+    }
+    .card {
+        background: #fff;
+        padding: 50px 80px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        text-align: center;
+        animation: pop 0.5s ease-out;
+    }
+    h2 {
+        color: #E53935;
+        margin-bottom: 20px;
+    }
+    a {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #FF9800;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    a:hover { background: #F57C00; }
+    @keyframes pop {
+        0% { transform: scale(0.7); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+</style>
+</head>
+<body>
+    <div class="card">
+        <h2><?php echo $msg; ?></h2>
+        <p id="countdown">系統將在 2 秒後自動跳轉</p>
+        <a href="<?php echo $redirect; ?>">立即返回</a>
+    </div>
+    <script>
+        let sec = 2;
+        const countdown = document.getElementById('countdown');
+        const timer = setInterval(() => {
+            sec--;
+            countdown.textContent = `系統將在 ${sec} 秒後自動跳轉`;
+            if(sec <= 0) {
+                clearInterval(timer);
+                window.location.href = "<?php echo $redirect; ?>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
