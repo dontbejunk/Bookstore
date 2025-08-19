@@ -15,7 +15,7 @@
 - 歷史訂單查詢
 
 ## ERD
-![圖片](./images/ERD.png)
+![圖片](./assets/images/ERD.png)
 
 ## 技術架構 Tech Stack
 
