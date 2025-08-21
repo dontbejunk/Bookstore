@@ -84,7 +84,7 @@ INSERT INTO `introduce` (`article`, `item.no`) VALUES
 
 CREATE TABLE `login` (
   `username` varchar(20) NOT NULL,
-  `password` varchar(10) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `telephone` char(10) NOT NULL,
   `address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -92,9 +92,6 @@ CREATE TABLE `login` (
 --
 -- 傾印資料表的資料 `login`
 --
-
-INSERT INTO `login` (`username`, `password`, `telephone`, `address`) VALUES
-('sssss', 'a', '0912345678', '樹林');
 
 -- --------------------------------------------------------
 

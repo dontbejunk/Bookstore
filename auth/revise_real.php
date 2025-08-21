@@ -8,21 +8,23 @@ $pw2 = $_POST['pw2'] ?? '';
 
 $success = false;
 $msg = '';
+$redirect = "revise.php"; // 預設返回頁面
 
-if($pw && $pw === $pw2){
+if ($pw && $pw === $pw2) {
+    $hashed_pw = password_hash($pw, PASSWORD_DEFAULT);
+
     $stmt = $con->prepare("UPDATE login SET password = ? WHERE username = ?");
-    $stmt->bind_param("ss", $pw, $id); // "ss" 代表兩個 string
-    if(mysqli_query($con, $sql)){
+    $stmt->bind_param("ss", $hashed_pw, $id);
+
+    if ($stmt->execute()) {
         $success = true;
         $msg = "修改成功!";
         $redirect = "../index.php";
     } else {
         $msg = "修改失敗，請稍後再試!";
-        $redirect = "revise.php";
     }
 } else {
     $msg = "第二次密碼錯誤或密碼為空白!";
-    $redirect = "revise.php";
 }
 
 ?>

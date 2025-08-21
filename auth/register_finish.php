@@ -68,12 +68,18 @@ HTML;
 
 // 判斷輸入
 if($id && $pw && $pw2 && $pw === $pw2){
-    $sql = "INSERT INTO login (username, password, telephone, address) VALUES ('$id', '$pw', '$telephone', '$address')";
-    if(mysqli_query($con, $sql)){
+    $hashedPw = password_hash($pw, PASSWORD_DEFAULT);
+
+    $stmt = $con->prepare("INSERT INTO login (username, password, telephone, address) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $id, $hashedPw, $telephone, $address);
+
+    if($stmt->execute()){
         showMessage("新增成功!");
     } else {
         showMessage("新增失敗，帳號可能已存在或資料錯誤!");
     }
+
+    $stmt->close();
 } else {
     showMessage("輸入資料不符合格式或密碼不一致!");
 }
